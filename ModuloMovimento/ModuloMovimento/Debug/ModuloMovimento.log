@@ -1,9 +1,8 @@
-﻿Compilazione avviata 11/01/2016 10:26:42.
+﻿Compilazione avviata 11/01/2016 10:56:47.
      1>Progetto "C:\Users\f.gavioli\Desktop\ProgettoQuinta\ModuloMovimento\ModuloMovimento\ModuloMovimento.vcxproj" sul nodo 2 (destinazioni: Build).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
          Source.cpp
-     1>c:\users\f.gavioli\desktop\progettoquinta\modulomovimento\modulomovimento\source.cpp(17): warning C4101: 'thread': variabile locale senza riferimenti
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\f.gavioli\Desktop\ProgettoQuinta\ModuloMovimento\Debug\ModuloMovimento.exe" /INCREMENTAL /NOLOGO "allegro-5.0.10-monolith-md-debug.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\f.gavioli\Desktop\ProgettoQuinta\ModuloMovimento\Debug\ModuloMovimento.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\f.gavioli\Desktop\ProgettoQuinta\ModuloMovimento\Debug\ModuloMovimento.lib" /MACHINE:X86 Debug\Source.obj
          ModuloMovimento.vcxproj -> C:\Users\f.gavioli\Desktop\ProgettoQuinta\ModuloMovimento\Debug\ModuloMovimento.exe
@@ -11,4 +10,4 @@
 
 Compilazione completata.
 
-Tempo trascorso 00:00:00.81
+Tempo trascorso 00:00:01.31

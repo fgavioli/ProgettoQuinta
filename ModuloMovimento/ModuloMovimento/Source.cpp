@@ -13,6 +13,7 @@ struct recPersonaggio{
 
 ALLEGRO_DISPLAY *schermo;
 int main(void){
+	thread t()
 	recPersonaggio s;
 	ALLEGRO_EVENT_QUEUE *q = NULL;
 	bool esc = false;
@@ -50,9 +51,7 @@ int main(void){
 				s.X += s.movespeed;
 			al_clear_to_color(al_map_rgb(127, 127, 127));
 			al_draw_bitmap(s.frame1, s.X, s.Y, 0);
-			al_flip_display();
-		
+			al_flip_display();	
 	}
-
 	return 0;
 }
