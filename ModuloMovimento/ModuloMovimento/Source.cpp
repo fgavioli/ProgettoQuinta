@@ -2,6 +2,9 @@
 #include <allegro5\allegro_image.h>
 #include <allegro5\allegro_primitives.h>
 #include <allegro5\allegro_native_dialog.h>
+#include <thread>
+#include <chrono>
+using namespace std;
 
 struct recPersonaggio{
 	int X;
@@ -11,9 +14,37 @@ struct recPersonaggio{
 	ALLEGRO_BITMAP *frame2;
 };
 
+void muoviSu(recPersonaggio p)
+{
+	while (true)
+	{
+		p.Y -= p.movespeed;
+	}
+}
+void muoviGiu(recPersonaggio p)
+{
+	while (true)
+	{
+		p.Y += p.movespeed;
+	}
+}
+void muoviSx(recPersonaggio p)
+{
+	while (true)
+	{
+		p.X -= p.movespeed;
+	}
+}
+void muoviDx(recPersonaggio p)
+{
+	while (true)
+	{
+		p.X += p.movespeed;
+	}
+}
+
 ALLEGRO_DISPLAY *schermo;
 int main(void){
-	thread t()
 	recPersonaggio s;
 	ALLEGRO_EVENT_QUEUE *q = NULL;
 	bool esc = false;
@@ -39,16 +70,17 @@ int main(void){
 		ALLEGRO_EVENT a;
 		ALLEGRO_TIMEOUT time;
 		al_wait_for_event_until(q, &a, &time);
+		if (a.keyboard.type == ALLEGRO_EVENT_KEY_DOWN)
 			if (a.keyboard.keycode == VK_ESCAPE)
 				esc = true;
 			else if (a.keyboard.keycode == ALLEGRO_KEY_W)
-				s.Y -= s.movespeed;
+				thread su(muoviSu, s);
 			else if (a.keyboard.keycode == ALLEGRO_KEY_S)
-				s.Y += s.movespeed;
+				thread giu(muoviGiu, s);
 			else if (a.keyboard.keycode == ALLEGRO_KEY_A)
-				s.X -= s.movespeed;
+				thread sx(muoviSx, s);
 			else if (a.keyboard.keycode == ALLEGRO_KEY_D)
-				s.X += s.movespeed;
+				thread dx(muoviDx, s);
 			al_clear_to_color(al_map_rgb(127, 127, 127));
 			al_draw_bitmap(s.frame1, s.X, s.Y, 0);
 			al_flip_display();	
