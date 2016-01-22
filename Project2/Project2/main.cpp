@@ -23,6 +23,7 @@ struct recPersonaggio
 {
 	short MoveSpeed;
 	short HealthPoints;
+	short MovAnime = 0;
 	ALLEGRO_BITMAP *Sprite;
 	recLocation Location;
 	bool Visible = false;
@@ -53,6 +54,18 @@ void reRender(recPersonaggio test){
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 	al_draw_bitmap(test.Sprite, test.Location.X, test.Location.Y, 0);
 	al_flip_display();
+}
+void reAnime(recPersonaggio test){
+	if (test.MovAnime == 0){
+		test = initrecPersonaggio(10, 10, al_load_bitmap("1.PNG"), initrecLocation(10, 10), true);
+		test.MovAnime++;
+	}
+	else
+	{
+		test = initrecPersonaggio(10, 10, al_load_bitmap("2.JPG"), initrecLocation(10, 10), true);
+		test.MovAnime--;
+	}
+
 }
 void init(){
 
@@ -120,18 +133,22 @@ int main(int argc, char **argv){
 			switch (ev.keyboard.keycode) {
 			case ALLEGRO_KEY_W:
 				key[UP] = true;
+				reAnime(test);
 				break;
 				 
 			case ALLEGRO_KEY_S:
 				key[DOWN] = true;
+				reAnime(test);
 				break;
 
 			case ALLEGRO_KEY_A:
 				key[LEFT] = true;
+				reAnime(test);
 				break;
 
 			case ALLEGRO_KEY_D:
 				key[RIGHT] = true;
+				reAnime(test);
 				break;
 			}
 		}
@@ -139,18 +156,22 @@ int main(int argc, char **argv){
 			switch (ev.keyboard.keycode) {
 			case ALLEGRO_KEY_W:
 				key[UP] = false;
+				reAnime(test);
 				break;
 
 			case ALLEGRO_KEY_S:
 				key[DOWN] = false;
+				reAnime(test);
 				break;
 
 			case ALLEGRO_KEY_A:
 				key[LEFT] = false;
+				reAnime(test);
 				break;
 
 			case ALLEGRO_KEY_D:
 				key[RIGHT] = false;
+				reAnime(test);
 				break;
 			}
 		}
