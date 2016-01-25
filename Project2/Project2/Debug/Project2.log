@@ -1,13 +1,14 @@
-﻿Build started 22/01/2016 12:03:40.
-     1>Project "C:\Users\Adrix\Documents\Visual Studio 2013\Projects\Project2\Project2\Project2.vcxproj" on node 2 (Build target(s)).
+﻿Compilazione avviata 25/01/2016 08:40:01.
+     1>Progetto "C:\Users\f.gavioli\Desktop\progettoquinta\Project2\Project2\Project2.vcxproj" sul nodo 2 (destinazioni: Build).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Adrix\Documents\Visual Studio 2013\Projects\Project2\Debug\Project2.exe" /INCREMENTAL /NOLOGO "allegro-5.0.10-monolith-md-debug.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Adrix\Documents\Visual Studio 2013\Projects\Project2\Debug\Project2.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Adrix\Documents\Visual Studio 2013\Projects\Project2\Debug\Project2.lib" /MACHINE:X86 Debug\main.obj
-         Project2.vcxproj -> C:\Users\Adrix\Documents\Visual Studio 2013\Projects\Project2\Debug\Project2.exe
-     1>Done Building Project "C:\Users\Adrix\Documents\Visual Studio 2013\Projects\Project2\Project2\Project2.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\f.gavioli\Desktop\progettoquinta\Project2\Debug\Project2.exe" /INCREMENTAL /NOLOGO "allegro-5.0.10-monolith-md-debug.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\f.gavioli\Desktop\progettoquinta\Project2\Debug\Project2.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\f.gavioli\Desktop\progettoquinta\Project2\Debug\Project2.lib" /MACHINE:X86 Debug\main.obj
+         LINK : C:\Users\f.gavioli\Desktop\progettoquinta\Project2\Debug\Project2.exe non trovato o non compilato dall'ultimo collegamento incrementale; verrà eseguito il collegamento completo
+         Project2.vcxproj -> C:\Users\f.gavioli\Desktop\progettoquinta\Project2\Debug\Project2.exe
+     1>Compilazione progetto "C:\Users\f.gavioli\Desktop\progettoquinta\Project2\Project2\Project2.vcxproj" (destinazioni: Build) completata.
 
-Build succeeded.
+Compilazione completata.
 
-Time Elapsed 00:00:01.42
+Tempo trascorso 00:00:02.66
