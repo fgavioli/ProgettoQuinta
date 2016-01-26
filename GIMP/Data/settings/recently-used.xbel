@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///C:/Users/f.gavioli/f.gavioli/Desktop/GIMP/ProgettoQuinta/ModuloMovimento/ModuloMovimento/2.png" added="2016-01-11T09:55:18Z" modified="2016-01-11T09:55:53Z" visited="2016-01-11T09:55:18Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/png"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.8 %u&apos;" modified="2016-01-11T09:55:53Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///C:/Users/f.gavioli/f.gavioli/Desktop/GIMP/ProgettoQuinta/ModuloMovimento/ModuloMovimento/1.png" added="2016-01-11T09:55:18Z" modified="2016-01-11T09:55:41Z" visited="2016-01-11T09:55:18Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/png"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.8 %u&apos;" modified="2016-01-11T09:55:41Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///C:/Users/f.gavioli/Desktop/sprite.bmp" added="2016-01-26T08:54:40Z" modified="2016-01-26T08:55:32Z" visited="2016-01-26T08:54:40Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/bmp"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.8 %u&apos;" modified="2016-01-26T08:55:32Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///C:/Users/f.gavioli/Desktop/sprite.xcf" added="2016-01-26T08:55:06Z" modified="2016-01-26T08:55:06Z" visited="2016-01-26T08:55:06Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/xcf"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.8 %u&apos;" modified="2016-01-26T08:55:06Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///C:/Users/f.gavioli/Desktop/sprite.jpg" added="2016-01-26T08:55:14Z" modified="2016-01-26T08:55:14Z" visited="2016-01-26T08:55:15Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.8.exe %u&apos;" modified="2016-01-26T08:55:14Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

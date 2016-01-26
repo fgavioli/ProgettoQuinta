@@ -14,6 +14,8 @@
 #define RIGHT 3
 #define MAX_CHARACTERS 50
 
+
+
 //Strutture utilizzate per ogni personaggio su schermo che descrivono posizionamento e caratteristiche principali personaggi.
 struct recLocation
 {
@@ -45,6 +47,21 @@ recPersonaggio initrecPersonaggio(short MoveSpeed, short HealthPoints, ALLEGRO_B
 	r.Visible = isVisible;
 	return r;
 }
+
+
+//Dichiarazione di variabili "ambientali" necessarie come base per la visualizzazione, quindi globali.
+ALLEGRO_DISPLAY *display = NULL;
+ALLEGRO_BITMAP *sfondo = NULL;
+ALLEGRO_EVENT_QUEUE *coda = NULL;
+ALLEGRO_TIMER *timer = NULL;
+int buffer[4] = { NULL, NULL, NULL, NULL };
+
+recPersonaggio personaggi[MAX_CHARACTERS];
+int npg;
+
+const float FPS = 60;
+
+
 //funzione di movimento utilizzata per ogni personaggio su schermo.
 void move(recPersonaggio &target, int targetX, int targetY){
 	target.Location.X = targetX;
@@ -67,39 +84,18 @@ void initAddons(){
 	al_init_image_addon();
 	al_install_keyboard();
 }
-void initEvents(ALLEGRO_EVENT_QUEUE *event_queue){
-	event_queue = al_create_event_queue();
-	al_register_event_source(coda, al_get_display_event_source(display));
-	al_register_event_source(coda, al_get_timer_event_source(timer));
-	al_register_event_source(coda, al_get_keyboard_event_source());
-}
-
-//Dichiarazione di variabili "ambientali" necessarie come base per la visualizzazione, quindi globali.
-ALLEGRO_DISPLAY *display = NULL;
-ALLEGRO_BITMAP *sfondo = NULL;
-ALLEGRO_EVENT_QUEUE *coda = NULL;
-ALLEGRO_TIMER *timer = NULL;
-int buffer[4] = { NULL, NULL, NULL, NULL };
-
-recPersonaggio personaggi[MAX_CHARACTERS];
-int npg;
-
-const float FPS = 60;
 
 int main(int argc, char **argv){
 
 	initAddons();
-	display = al_create_display(1366, 768);
 	timer = al_create_timer(1.0 / FPS);
-
+	display = al_create_display(1366, 768);
+	coda = al_create_event_queue();
+	al_register_event_source(coda, al_get_display_event_source(display));
+	al_register_event_source(coda, al_get_timer_event_source(timer));
+	al_register_event_source(coda, al_get_keyboard_event_source());
 	//al_set_new_display_flags(ALLEGRO_FULLSCREEN);
-	initEvents(coda);
-
 	personaggi[0] = initrecPersonaggio(10, 10, al_load_bitmap("1.PNG"), initrecLocation(10, 10), true);
-	
-	al_clear_to_color(al_map_rgb(0, 0, 0));
-	al_draw_bitmap(personaggi[0].Sprite, personaggi[0].Location.X, personaggi[0].Location.Y, NULL);
-	al_flip_display();
 	al_start_timer(timer);
 	bool redraw = false;
 	while (1)
