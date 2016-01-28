@@ -6,7 +6,7 @@
 # Most values can be set within GIMP by changing some options in the
 # Preferences dialog.
 
-(font-path "C:\\Users\\f.gavioli\\f.gavioli\\Desktop\\GIMP\\Data\\.gimp\\fonts;C:\\Users\\f.gavioli\\f.gavioli\\Data\\Fonts")
+(font-path "C:\\Users\\f.gavioli\\Desktop\\f.gavioli\\Desktop\\GIMP\\Data\\.gimp\\fonts;C:\\Users\\f.gavioli\\Desktop\\f.gavioli\\Data\\Fonts")
 
 
 # end of gimprc

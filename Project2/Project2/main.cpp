@@ -86,23 +86,27 @@ void initAddons(){
 }
 
 int main(int argc, char **argv){
-
 	initAddons();
 	timer = al_create_timer(1.0 / FPS);
 	display = al_create_display(1366, 768);
+	//al_set_new_display_flags(ALLEGRO_FULLSCREEN);
 	coda = al_create_event_queue();
 	al_register_event_source(coda, al_get_display_event_source(display));
 	al_register_event_source(coda, al_get_timer_event_source(timer));
 	al_register_event_source(coda, al_get_keyboard_event_source());
-	//al_set_new_display_flags(ALLEGRO_FULLSCREEN);
+	srand(time(NULL));
+
 	personaggi[0] = initrecPersonaggio(10, 10, al_load_bitmap("1.PNG"), initrecLocation(10, 10), true);
+	npg++;
+	personaggi[1] = initrecPersonaggio(10, 10, al_load_bitmap("1.PNG"), initrecLocation(300, 300), true);
+	npg++;
 	al_start_timer(timer);
 	bool redraw = false;
+	int sasso = 0;
 	while (1)
 	{
 		ALLEGRO_EVENT ev;
 		al_wait_for_event(coda, &ev);
-
 		if (ev.type == ALLEGRO_EVENT_TIMER) {
 			if (buffer[UP]) {
 				personaggi[0].Location.Y -= personaggi[0].MoveSpeed;
@@ -119,13 +123,44 @@ int main(int argc, char **argv){
 			if (buffer[RIGHT]) {
 				personaggi[0].Location.X += personaggi[0].MoveSpeed;
 			}
-
+			int movement = rand() % 10;
+			sasso++;
+			if (sasso == 30)
+			{
+				if (movement == 0)
+					personaggi[1].Location.X += personaggi[1].MoveSpeed;
+				else if (movement == 1)
+					personaggi[1].Location.X -= personaggi[1].MoveSpeed;
+				else if (movement == 2)
+					personaggi[1].Location.Y += personaggi[1].MoveSpeed;
+				else if (movement == 3)
+					personaggi[1].Location.Y -= personaggi[1].MoveSpeed;
+				else if (movement == 4)
+				{
+					personaggi[1].Location.X += personaggi[1].MoveSpeed;
+					personaggi[1].Location.Y += personaggi[1].MoveSpeed;
+				}
+				else if (movement == 5)
+				{
+					personaggi[1].Location.X += personaggi[1].MoveSpeed;
+					personaggi[1].Location.Y -= personaggi[1].MoveSpeed;
+				}
+				else if (movement == 6)
+				{
+					personaggi[1].Location.X -= personaggi[1].MoveSpeed;
+					personaggi[1].Location.Y += personaggi[1].MoveSpeed;
+				}
+				else if (movement == 7)
+				{
+					personaggi[1].Location.X -= personaggi[1].MoveSpeed;
+					personaggi[1].Location.Y -= personaggi[1].MoveSpeed;
+				}
+				sasso = 0;
+			}
 			redraw = true;
-		}
-		else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+		}else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
 			break;
-		}
-		else if (ev.type == ALLEGRO_EVENT_KEY_DOWN) {
+		}else if (ev.type == ALLEGRO_EVENT_KEY_DOWN) {
 			switch (ev.keyboard.keycode) {
 			case ALLEGRO_KEY_W:
 				buffer[UP] = true;
@@ -143,8 +178,7 @@ int main(int argc, char **argv){
 				buffer[RIGHT] = true;
 				break;
 			}
-		}
-		else if (ev.type == ALLEGRO_EVENT_KEY_UP) {
+		}else if (ev.type == ALLEGRO_EVENT_KEY_UP) {
 			switch (ev.keyboard.keycode) {
 			case ALLEGRO_KEY_W:
 				buffer[UP] = false;

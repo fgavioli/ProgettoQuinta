@@ -3,7 +3,7 @@
       xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
       xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
 >
-  <bookmark href="file:///C:/Users/f.gavioli/f.gavioli/Desktop/GIMP/ProgettoQuinta/ModuloMovimento/ModuloMovimento/2.png" added="2016-01-11T09:55:18Z" modified="2016-01-11T09:55:53Z" visited="2016-01-11T09:55:18Z">
+  <bookmark href="file:///C:/Users/f.gavioli/Desktop/f.gavioli/Desktop/GIMP/ProgettoQuinta/ModuloMovimento/ModuloMovimento/2.png" added="2016-01-11T09:55:18Z" modified="2016-01-11T09:55:53Z" visited="2016-01-11T09:55:18Z">
     <info>
       <metadata owner="http://freedesktop.org">
         <mime:mime-type type="image/png"/>
@@ -16,7 +16,7 @@
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="file:///C:/Users/f.gavioli/f.gavioli/Desktop/GIMP/ProgettoQuinta/ModuloMovimento/ModuloMovimento/1.png" added="2016-01-11T09:55:18Z" modified="2016-01-11T09:55:41Z" visited="2016-01-11T09:55:18Z">
+  <bookmark href="file:///C:/Users/f.gavioli/Desktop/f.gavioli/Desktop/GIMP/ProgettoQuinta/ModuloMovimento/ModuloMovimento/1.png" added="2016-01-11T09:55:18Z" modified="2016-01-11T09:55:41Z" visited="2016-01-11T09:55:18Z">
     <info>
       <metadata owner="http://freedesktop.org">
         <mime:mime-type type="image/png"/>
@@ -29,7 +29,7 @@
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="file:///C:/Users/f.gavioli/Desktop/sprite.bmp" added="2016-01-26T08:54:40Z" modified="2016-01-26T08:55:32Z" visited="2016-01-26T08:54:40Z">
+  <bookmark href="file:///C:/Users/f.gavioli/Desktop/Desktop/sprite.bmp" added="2016-01-26T08:54:40Z" modified="2016-01-26T08:55:32Z" visited="2016-01-26T08:54:40Z">
     <info>
       <metadata owner="http://freedesktop.org">
         <mime:mime-type type="image/bmp"/>
@@ -42,7 +42,7 @@
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="file:///C:/Users/f.gavioli/Desktop/sprite.xcf" added="2016-01-26T08:55:06Z" modified="2016-01-26T08:55:06Z" visited="2016-01-26T08:55:06Z">
+  <bookmark href="file:///C:/Users/f.gavioli/Desktop/Desktop/sprite.xcf" added="2016-01-26T08:55:06Z" modified="2016-01-26T08:55:06Z" visited="2016-01-26T08:55:06Z">
     <info>
       <metadata owner="http://freedesktop.org">
         <mime:mime-type type="image/xcf"/>
@@ -55,12 +55,25 @@
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="file:///C:/Users/f.gavioli/Desktop/sprite.jpg" added="2016-01-26T08:55:14Z" modified="2016-01-26T08:55:14Z" visited="2016-01-26T08:55:15Z">
+  <bookmark href="file:///C:/Users/f.gavioli/Desktop/Desktop/sprite.jpg" added="2016-01-26T08:55:14Z" modified="2016-01-26T08:55:14Z" visited="2016-01-26T08:55:15Z">
     <info>
       <metadata owner="http://freedesktop.org">
         <mime:mime-type type="application/octet-stream"/>
         <bookmark:applications>
           <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.8.exe %u&apos;" modified="2016-01-26T08:55:14Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///C:/Users/f.gavioli/Desktop/progettoquinta/Project2/Project2/1.png" added="2016-01-28T09:08:21Z" modified="2016-01-28T09:10:58Z" visited="2016-01-28T09:08:21Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/png"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-2.8 %u&apos;" modified="2016-01-28T09:10:58Z" count="8"/>
         </bookmark:applications>
       </metadata>
     </info>
