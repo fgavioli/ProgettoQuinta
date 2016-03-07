@@ -69,13 +69,13 @@
   <ItemGroup>
     <ClCompile Include="init.cpp" />
     <ClCompile Include="init.h" />
+    <ClCompile Include="fmov.cpp" />
     <ClCompile Include="schermo.cpp" />
-    <ClCompile Include="movimento.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="fmov.h" />
     <ClInclude Include="schermo.h" />
-    <ClInclude Include="movimento.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

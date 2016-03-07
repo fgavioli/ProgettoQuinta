@@ -6,4 +6,4 @@ struct recSchermata {
 };
 
 recSchermata initrecSchermata(recSchermata test, int schermoX, int schermoY);
-void sudoku_finale(recSchermata test);
+void sudoku_schermo(recSchermata test);

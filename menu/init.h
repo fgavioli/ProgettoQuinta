@@ -6,3 +6,4 @@
 void initBase();
 void initImg();
 void initAudio();
+void initKeyboard();

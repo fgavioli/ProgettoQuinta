@@ -1,3 +1,7 @@
+#include <allegro5\allegro.h>
+#include <allegro5\allegro_image.h>
+#include <allegro5\allegro_audio.h>
+#include <allegro5\allegro_acodec.h>
 #include "init.h"
 
 void initBase(){
@@ -11,4 +15,9 @@ void initImg(){
 
 void initAudio(){
 	al_init_acodec_addon();
+	al_install_audio();
+}
+
+void initKeyboard(){
+	al_install_keyboard();
 }
