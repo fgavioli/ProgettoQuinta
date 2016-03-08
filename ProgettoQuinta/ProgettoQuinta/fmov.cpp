@@ -38,7 +38,7 @@ void move(recPersonaggio &target, int targetX, int targetY){
 //Funzione che cancella ogni oggetto su schermo e lo ridisegna se il parametro visible dell'oggetto stesso è true.
 void reRender(){
 	al_clear_to_color(al_map_rgb(0, 0, 0));
-	al_draw_bitmap(target.Sprite, target.Location.X, target.Location.X, 1);
+	al_draw_bitmap(target.Sprite, target.Location.X, target.Location.Y, 1);
 	al_flip_display();
 }
 
