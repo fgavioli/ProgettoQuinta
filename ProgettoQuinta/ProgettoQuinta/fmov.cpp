@@ -2,13 +2,17 @@
 #include <allegro5\allegro_image.h>
 #include <allegro5\allegro_color.h>
 #include <allegro5\events.h>
+#include <iomanip>
+#include <locale>
+#include <sstream>
+#include <string>
 #include "fmov.h"
 
 #define UP 0
 #define DOWN 1
 #define LEFT 2
 #define RIGHT 3
-
+using namespace std;
 bool key_buffer[] { NULL, NULL, NULL, NULL };
 //Dichiarazione di variabili "ambientali" necessarie come base per la visualizzazione, quindi globali.
 recPersonaggio target;
@@ -21,6 +25,7 @@ recPersonaggio initrecPersonaggio(short MoveSpeed, short HealthPoints, ALLEGRO_B
 	r.Sprite = Sprite;
 	r.Location = Location;
 	r.Visible = isVisible;
+	r.AnimationPhase = 0;
 	return r;
 }
 recLocation initrecLocation(int x, int y){
@@ -38,28 +43,63 @@ void move(recPersonaggio &target, int targetX, int targetY){
 //Funzione che cancella ogni oggetto su schermo e lo ridisegna se il parametro visible dell'oggetto stesso è true.
 void reRender(){
 	al_clear_to_color(al_map_rgb(0, 0, 0));
-	al_draw_bitmap(target.Sprite, target.Location.X, target.Location.Y, 1);
+	if (target.Sprite != NULL)
+		al_draw_bitmap(target.Sprite, target.Location.X, target.Location.Y, 1);
 	al_flip_display();
 }
 
+void animate(recPersonaggio &target){
+	target.AnimationPhase++;
+	if (target.AnimationPhase == 5)
+		target.AnimationPhase = 0;
+	switch (target.AnimationPhase){
+	case 0:
+		target.Sprite = al_load_bitmap("0.png");
+		break;
+	case 1:
+		target.Sprite = al_load_bitmap("1.png");
+		break;
+	case 2:
+		target.Sprite = al_load_bitmap("2.png");
+		break;
+	case 3:
+		target.Sprite = al_load_bitmap("3.png");
+		break;
+	case 4:
+		target.Sprite = al_load_bitmap("4.png");
+		break;
+	}
+}
 
 void movCycle(){
-	target = initrecPersonaggio(10, 10, al_load_bitmap("sprite.png"), initrecLocation(100, 100), true);
+	target = initrecPersonaggio(5, 10, al_load_bitmap("1.png"), initrecLocation(100, 100), true);
 	ALLEGRO_EVENT_QUEUE *coda = NULL;
 	ALLEGRO_TIMER* timer;
 	coda = al_create_event_queue();
 	timer = al_create_timer(1.0 / 60);
 	al_register_event_source(coda, al_get_timer_event_source(timer));
 	al_register_event_source(coda, al_get_keyboard_event_source());
-
 	al_start_timer(timer);
-
+	int animationFrameCounter = 0;
 	while (!false)
 	{
 		ALLEGRO_EVENT e;
 		al_wait_for_event(coda, &e);
 		if (e.type == ALLEGRO_EVENT_TIMER)
+		{
 			redraw = player_action();
+			if (redraw){
+				animationFrameCounter++;
+				if (animationFrameCounter > 7){
+					animate(target);
+					animationFrameCounter = 0;
+				}
+			}
+			else{
+				target.Sprite = al_load_bitmap("2.png");
+				redraw = true;
+			}
+		}
 		else if (e.type == ALLEGRO_EVENT_KEY_DOWN)
 		{
 			switch (e.keyboard.keycode)

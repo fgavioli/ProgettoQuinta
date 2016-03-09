@@ -1,4 +1,4 @@
-﻿Compilazione avviata 08/03/2016 13:51:59.
+﻿Compilazione avviata 09/03/2016 10:58:46.
      1>Progetto "C:\Users\f.gavioli\Desktop\ProgettoQuinta\ProgettoQuinta\ProgettoQuinta\ProgettoQuinta.vcxproj" sul nodo 2 (destinazioni: Build).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt fmov.cpp
@@ -13,4 +13,4 @@
 
 Compilazione completata.
 
-Tempo trascorso 00:00:00.82
+Tempo trascorso 00:00:01.30

@@ -11,6 +11,7 @@ struct recPersonaggio
 	short MoveSpeed;
 	short HealthPoints;
 	ALLEGRO_BITMAP *Sprite;
+	int AnimationPhase;
 	recLocation Location;
 	bool Visible = false;
 };
