@@ -1,7 +1,6 @@
 #include "schermo.h"
 #include "fmov.h"
 #include "init.h"
-
 recSchermata display;
 void main(void){
 	initBase();
