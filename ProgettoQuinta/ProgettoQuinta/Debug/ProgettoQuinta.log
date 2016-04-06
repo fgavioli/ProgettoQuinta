@@ -1,17 +1,17 @@
-﻿Build started 04/04/2016 20.54.16.
-     1>Project "C:\Users\Gavioli Federico\Desktop\ProgettoQuinta\ProgettoQuinta\ProgettoQuinta\ProgettoQuinta.vcxproj" on node 2 (Build target(s)).
+﻿Compilazione avviata 06/04/2016 10:19:05.
+     1>Progetto "C:\Users\a.kalkowski\Desktop\ProgettoQuinta\ProgettoQuinta\ProgettoQuinta\ProgettoQuinta.vcxproj" sul nodo 2 (destinazioni: Build).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt fmov.cpp
          fmov.cpp
-     1>c:\users\gavioli federico\desktop\progettoquinta\progettoquinta\progettoquinta\fmov.cpp(293): warning C4309: 'initializing' : truncation of constant value
+     1>c:\users\a.kalkowski\desktop\progettoquinta\progettoquinta\progettoquinta\fmov.cpp(285): warning C4309: 'inizializzazione': troncamento di valore costante
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Gavioli Federico\Desktop\ProgettoQuinta\ProgettoQuinta\Debug\ProgettoQuinta.exe" /INCREMENTAL /NOLOGO "allegro-5.0.10-monolith-md-debug.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Gavioli Federico\Desktop\ProgettoQuinta\ProgettoQuinta\Debug\ProgettoQuinta.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Gavioli Federico\Desktop\ProgettoQuinta\ProgettoQuinta\Debug\ProgettoQuinta.lib" /MACHINE:X86 Debug\fmov.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\a.kalkowski\Desktop\ProgettoQuinta\ProgettoQuinta\Debug\ProgettoQuinta.exe" /INCREMENTAL /NOLOGO "allegro-5.0.10-monolith-md-debug.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\a.kalkowski\Desktop\ProgettoQuinta\ProgettoQuinta\Debug\ProgettoQuinta.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\a.kalkowski\Desktop\ProgettoQuinta\ProgettoQuinta\Debug\ProgettoQuinta.lib" /MACHINE:X86 Debug\fmov.obj
          Debug\init.obj
          Debug\main.obj
          Debug\schermo.obj
-         ProgettoQuinta.vcxproj -> C:\Users\Gavioli Federico\Desktop\ProgettoQuinta\ProgettoQuinta\Debug\ProgettoQuinta.exe
-     1>Done Building Project "C:\Users\Gavioli Federico\Desktop\ProgettoQuinta\ProgettoQuinta\ProgettoQuinta\ProgettoQuinta.vcxproj" (Build target(s)).
+         ProgettoQuinta.vcxproj -> C:\Users\a.kalkowski\Desktop\ProgettoQuinta\ProgettoQuinta\Debug\ProgettoQuinta.exe
+     1>Compilazione progetto "C:\Users\a.kalkowski\Desktop\ProgettoQuinta\ProgettoQuinta\ProgettoQuinta\ProgettoQuinta.vcxproj" (destinazioni: Build) completata.
 
-Build succeeded.
+Compilazione completata.
 
-Time Elapsed 00:00:02.02
+Tempo trascorso 00:00:01.23

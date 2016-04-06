@@ -11,7 +11,6 @@
 #define E 4
 using namespace std;
 
-enum IDS{ PLAYER, BULLET, ENEMY };
 enum dir{ down=0 ,left=48,right=96,up=128}direction;
 bool key_buffer[] { NULL, NULL, NULL, NULL, NULL };
 //Dichiarazione di variabili "ambientali" necessarie come base per la visualizzazione, quindi globali.
@@ -20,7 +19,6 @@ recStanza stanza1;
 bool redraw = false;
 bool anim = false;
 const int size = 5;
-Bullet bullet[5];
 ALLEGRO_BITMAP* bg[3];
 ALLEGRO_BITMAP* bg_copia;
 ALLEGRO_BITMAP* sprite;
@@ -40,10 +38,6 @@ recStanza initrecStanza(ALLEGRO_BITMAP *immagine, short num_stanza, short col_le
 	recStanza stanza;
 	stanza.immagine = immagine;
 	//stanza.num_stanza = num_stanza;
-	stanza.col_left = col_left;
-	stanza.col_right = col_right;
-	stanza.col_up = col_up;
-	stanza.col_down = col_down;
 	stanza.door_left = door_left;
 	stanza.door_right = door_right;
 	stanza.door_up = door_up;
@@ -195,7 +189,6 @@ void reRender(){
 	al_draw_bitmap(bg_copia , 0, 0, 1);
 	if (target.Sprite != NULL)
 		personaggio_img();
-		DrawBullet();
 		al_flip_display();
 }
 
@@ -210,7 +203,6 @@ void movCycle(){
 	al_register_event_source(coda, al_get_keyboard_event_source());
 	al_start_timer(timer);
 	int animationFrameCounter = 0;
-	InitBullet();
 	while (!false)
 	{
 		ALLEGRO_EVENT e;
@@ -252,7 +244,6 @@ void movCycle(){
 
 			case ALLEGRO_KEY_E:
 				key_buffer[E] = true;
-				SparaBullet();
 				break;
 			}
 		}
@@ -334,51 +325,5 @@ bool player_action() {
 
 		redr = true;
 	}
-	UpdateBullet();
 	return redr;
-}
-
-void DrawBullet()
-{
-	for (int i = 0; i < size; i++)
-	{
-		if (bullet[i].live)
-			al_draw_bitmap(target.Sprite, bullet[i].x, bullet[i].y, 0);
-	}
-}
-
-void SparaBullet()
-{
-	for (int i = 0; i < size; i++)
-	{
-		if (!bullet[i].live)
-		{
-			bullet[i].x = target.Location.X + 17;
-			bullet[i].y = target.Location.Y;
-			bullet[i].live = true;
-			break;
-		}
-	}
-}
-
-void UpdateBullet()
-{
-	for (int i = 0; i < size; i++)
-	{
-		if (bullet[i].live)
-		{
-			bullet[i].x += bullet[i].speed;
-			if (bullet[i].x > 700)
-				bullet[i].live = false;
-		}
-	}
-}
-void InitBullet()
-{
-	for (int i = 0; i < size; i++)
-	{
-		bullet[i].ID = BULLET;
-		bullet[i].speed = 10;
-		bullet[i].live = false;
-	}
 }
