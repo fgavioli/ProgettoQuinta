@@ -8,21 +8,17 @@
 #define DOWN 1
 #define LEFT 2
 #define RIGHT 3
-#define E 4
 using namespace std;
 
-enum dir{ down=0 ,left=48,right=96,up=128}direction;
-bool key_buffer[] { NULL, NULL, NULL, NULL, NULL };
+enum dir{ down=0 ,left=48,right=96,up=128}posizioneSprite;
+bool key_buffer[] { NULL, NULL, NULL, NULL};
 //Dichiarazione di variabili "ambientali" necessarie come base per la visualizzazione, quindi globali.
 recPersonaggio target;
-recStanza stanza1;
 bool redraw = false;
-bool anim = false;
 const int size = 5;
-ALLEGRO_BITMAP* bg[3];
-ALLEGRO_BITMAP* bg_copia;
+recStanza scenario[3][3];
 ALLEGRO_BITMAP* sprite;
-//funzioni di inizializzazione per maggiore pulizia del codice.
+//funzioni di inizializzazione per diverse strutture
 recPersonaggio initrecPersonaggio(short MoveSpeed, short HealthPoints,short stanza, ALLEGRO_BITMAP *Sprite, recLocation Location, bool isVisible){
 	recPersonaggio r;
 	r.MoveSpeed = MoveSpeed;
@@ -31,7 +27,6 @@ recPersonaggio initrecPersonaggio(short MoveSpeed, short HealthPoints,short stan
 	r.Location = Location;
 	r.Visible = isVisible;
 	r.stanza = stanza;
-	r.AnimationPhase = 0;
 	return r;
 }
 recStanza initrecStanza(ALLEGRO_BITMAP *immagine, short num_stanza, short col_left, short col_right, short col_up, short col_down, short door_left, short door_right, short door_up, short door_down){
@@ -51,16 +46,16 @@ recLocation initrecLocation(int x, int y){
 	return r;
 }
 
-//Funzione per le animazioni
+//Funzione per le animazioni (DA GUARDARE!!!!!!!!!!!!)
 void personaggio_img() {
 
-		switch (direction)
+		switch (posizioneSprite)
 		{
 		case down:
 			target.sourceY = 0;
-			if (anim == TRUE){
+			if (target.anim == TRUE){
 				target.sourceX += 32;
-				anim = FALSE;
+				target.anim = FALSE;
 			}
 			if (target.sourceX != 128)
 				al_draw_bitmap_region(target.Sprite, target.sourceX, target.sourceY, 32, 48, target.Location.X, target.Location.Y, NULL);
@@ -71,9 +66,9 @@ void personaggio_img() {
 			break;
 		case up:
 			target.sourceY = 144;
-			if (anim == TRUE){
+			if (target.anim == TRUE){
 				target.sourceX += 32;
-				anim = FALSE;
+				target.anim = FALSE;
 			}
 			if (target.sourceX != 128)
 				al_draw_bitmap_region(target.Sprite, target.sourceX, target.sourceY, 32, 48, target.Location.X, target.Location.Y, NULL);
@@ -84,9 +79,9 @@ void personaggio_img() {
 			break;
 		case left:
 			target.sourceY = 48;
-			if (anim == TRUE){
+			if (target.anim == TRUE){
 				target.sourceX += 32;
-				anim = FALSE;
+				target.anim = FALSE;
 			}
 			if (target.sourceX != 128)
 				al_draw_bitmap_region(target.Sprite, target.sourceX, target.sourceY, 32, 48, target.Location.X, target.Location.Y, NULL);
@@ -97,9 +92,9 @@ void personaggio_img() {
 			break;
 		case right:
 			target.sourceY = 96;
-			if (anim == TRUE) {
+			if (target.anim == TRUE) {
 				target.sourceX += 32;
-				anim = FALSE;
+				target.anim = FALSE;
 			}
 			if (target.sourceX != 128)
 				al_draw_bitmap_region(target.Sprite, target.sourceX, target.sourceY, 32, 48, target.Location.X, target.Location.Y, NULL);
@@ -112,31 +107,11 @@ void personaggio_img() {
 			break;
 		}
 }
-
-void load_img(){
-	bg[1] = al_load_bitmap("bg.jpg");
-	bg[2] = al_load_bitmap("bg.jpg");
-	sprite = al_load_bitmap("12.png");
+void load_stanze(){
+	scenario[0][0].immagine = al_load_bitmap("12.png");
+	//aggiungere load da disco di altre immagini stanze
 }
-ALLEGRO_BITMAP* load_stanza(short n){
-	switch (n){
-	case 1:
-		bg_copia = bg[1];
-		break;
-	case 2:
-		bg_copia = bg[2];
-		break;
-	case 3:
-		bg_copia = bg[1];
-		break;
-	case 4:
-		bg_copia = bg[2];
-		break;
-	default:
-		break;
-	}
-	return bg_copia;
-}
+//DA GENERALIZZARE UTILIZZANDO STRUTTURA RECSTANZA
 void control_collisioni(char l){
 	switch (l){
 		case 'a': //up
@@ -185,15 +160,14 @@ void control_collisioni(char l){
 void reRender(){
 
 	al_clear_to_color(al_map_rgb(0, 0, 0));
-	bg_copia = load_stanza(target.stanza);
-	al_draw_bitmap(bg_copia , 0, 0, 1);
+	al_draw_bitmap(scenario[0][0].immagine , 0, 0, 1);
 	if (target.Sprite != NULL)
 		personaggio_img();
-		al_flip_display();
+	al_flip_display();
 }
 
 void movCycle(){
-	load_img();
+	load_stanze();
 	target = initrecPersonaggio(5, 10, 1 , sprite, initrecLocation(400, 400), true);
 	ALLEGRO_EVENT_QUEUE *coda = NULL;
 	ALLEGRO_TIMER* timer;
@@ -241,10 +215,6 @@ void movCycle(){
 			case ALLEGRO_KEY_D:
 				key_buffer[RIGHT] = true;
 				break;
-
-			case ALLEGRO_KEY_E:
-				key_buffer[E] = true;
-				break;
 			}
 		}
 
@@ -267,10 +237,6 @@ void movCycle(){
 			case ALLEGRO_KEY_D:
 				key_buffer[RIGHT] = false;
 				break;
-
-			case ALLEGRO_KEY_E:
-				key_buffer[E] = false;
-				break;
 			}
 		}
 
@@ -278,15 +244,14 @@ void movCycle(){
 			reRender();
 	}
 }
-
+//DA GUARDARE
 bool player_action() {
 	bool redr = false;
 	char col_char = 'sas';
 	if (key_buffer[UP])
 	{
-		
-		anim = true;
-		direction = up;
+		target.anim = true;
+		posizioneSprite = up;
 		target.Location.Y -= target.MoveSpeed;
 		col_char = 'a';
 		control_collisioni(col_char);
@@ -295,8 +260,8 @@ bool player_action() {
 	}
 	if (key_buffer[DOWN])
 	{
-		anim = true;
-		direction = down;
+		target.anim = true;
+		posizioneSprite = down;
 		target.Location.Y += target.MoveSpeed;
 		col_char = 'b';
 		control_collisioni(col_char);
@@ -304,8 +269,8 @@ bool player_action() {
 	}
 	if (key_buffer[LEFT])
 	{
-		anim = true;
-		direction = left;
+		target.anim = true;
+		posizioneSprite = left;
 		target.Location.X -= target.MoveSpeed;
 		col_char = 'c';
 		control_collisioni(col_char);
@@ -313,16 +278,11 @@ bool player_action() {
 	}
 	if (key_buffer[RIGHT])
 	{
-		anim = true;
-		direction = right;
+		target.anim = true;
+		posizioneSprite = right;
 		target.Location.X += target.MoveSpeed;
 		col_char = 'd';
 		control_collisioni(col_char);
-		redr = true;
-	}
-	if (key_buffer[E])
-	{
-
 		redr = true;
 	}
 	return redr;
