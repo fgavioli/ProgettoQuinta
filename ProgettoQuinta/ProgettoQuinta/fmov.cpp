@@ -18,6 +18,7 @@ bool redraw = false;
 const int size = 5;
 recStanza scenario[3][3];
 ALLEGRO_BITMAP* sprite;
+
 //funzioni di inizializzazione per diverse strutture
 recPersonaggio initrecPersonaggio(short MoveSpeed, short HealthPoints,short stanza, ALLEGRO_BITMAP *Sprite, recLocation Location, bool isVisible){
 	recPersonaggio r;
@@ -108,7 +109,7 @@ void personaggio_img() {
 		}
 }
 void load_stanze(){
-	scenario[0][0].immagine = al_load_bitmap("12.png");
+	scenario[0][0].immagine = al_load_bitmap("bg.jpg");
 	//aggiungere load da disco di altre immagini stanze
 }
 //DA GENERALIZZARE UTILIZZANDO STRUTTURA RECSTANZA
@@ -161,13 +162,13 @@ void reRender(){
 
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 	al_draw_bitmap(scenario[0][0].immagine , 0, 0, 1);
-	if (target.Sprite != NULL)
-		personaggio_img();
+	personaggio_img();
 	al_flip_display();
 }
 
 void movCycle(){
 	load_stanze();
+	sprite = al_load_bitmap("12.png");
 	target = initrecPersonaggio(5, 10, 1 , sprite, initrecLocation(400, 400), true);
 	ALLEGRO_EVENT_QUEUE *coda = NULL;
 	ALLEGRO_TIMER* timer;
