@@ -19,8 +19,8 @@ struct recPersonaggio
 	short MoveSpeed;
 	short HealthPoints;
 	short stanza;
-	short sourceX = 0;
-	short sourceY = 0;
+	short faseAnim;								
+	short dirAnim;								//Direzione verso la quale il personaggio è girato ()
 	ALLEGRO_BITMAP *Sprite;
 	int AnimationPhase;
 	recLocation Location;
