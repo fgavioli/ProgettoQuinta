@@ -10,21 +10,22 @@ struct recStanza{
 
 	ALLEGRO_BITMAP* immagine;
 	short rowStanza, colStanza;
-	short lim_left, lim_right, lim_up, lim_down; //limiti delle stanze
+	// Dato che la stanza è 1024x768 i limiti superiori e inferiori delle stanze sono a loro volta 
+	// 0,0,1024,768
 	short door_left, door_right, door_up, door_down; //porte delle stanze 
 };
 
 struct recPersonaggio
 {
-	short MoveSpeed;
-	short HealthPoints;
-	short stanza;
-	short faseAnim;								
-	short dirAnim;								//Direzione verso la quale il personaggio è girato ()
-	ALLEGRO_BITMAP *Sprite;
-	int AnimationPhase;
-	recLocation Location;
-	bool Visible = false;
+	short MoveSpeed;							//Velocità di movimento del personaggio
+	short HealthPointsATM;						//Punti Vita Attuali
+	short HealthPointsTOT;						//Punti Vita Totali
+	short stanza;								//Probabilmente da togliere
+	short faseAnim;								//Valore numerico da 0 a 4 che identifica lo stato dell'animazione
+	short dirAnim;								//Direzione verso la quale il personaggio è girato 
+	ALLEGRO_BITMAP *Sprite;						//Sprite completo con matrice animazioni personaggio
+	recLocation Location;						//Posizione assoluta del personaggio nella mappa
+	bool Visible = false;						//Parametro Visible per ogni oggetto personaggio
 	bool anim = false;
 };
 
@@ -35,3 +36,5 @@ void load_stanze();
 void reRender();
 bool player_action();
 void movCycle();
+void disegna_personaggio();
+void control_collisioni(char l);

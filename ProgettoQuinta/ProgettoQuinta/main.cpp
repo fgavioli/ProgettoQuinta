@@ -7,7 +7,7 @@ void main(void){
 	initImg();
 	initAudio();
 	initKeyboard();
-	initrecSchermata(display, 1366, 768);
+	initrecSchermata(display, 1024, 768);
 	movCycle();
 	sudoku_schermo(display);
 }
