@@ -22,7 +22,7 @@ struct recPersonaggio
 	short HealthPointsTOT;						//Punti Vita Totali
 	short stanza;								//Probabilmente da togliere
 	short faseAnim;								//Valore numerico da 0 a 4 che identifica lo stato dell'animazione
-	short dirAnim;								//Direzione verso la quale il personaggio è girato 
+	short dirAnim;								//Direzione verso la quale il personaggio è girato 0 - su, 1 - giu, 2 - sx, 3 - dx
 	ALLEGRO_BITMAP *Sprite;						//Sprite completo con matrice animazioni personaggio
 	recLocation Location;						//Posizione assoluta del personaggio nella mappa
 	bool Visible = false;						//Parametro Visible per ogni oggetto personaggio
@@ -38,3 +38,4 @@ bool player_action();
 void movCycle();
 void disegna_personaggio();
 void control_collisioni(char l);
+recLocation numToLoc(recPersonaggio p);

@@ -53,64 +53,8 @@ void load_stanze(){
 }
 //Funzione per le animazioni (DA GUARDARE!!!!!!!!!!!!)
 void disegna_personaggio() {
-
-		switch (posizioneSprite)
-		{
-		case down:
-			target.faseAnim = 0;
-			if (target.anim == TRUE){
-				target.dirAnim += 32;
-				target.anim = FALSE;
-			}
-			if (target.dirAnim != 128)
-				al_draw_bitmap_region(target.Sprite, target.dirAnim, target.faseAnim, 32, 48, target.Location.X, target.Location.Y, NULL);
-			else{
-				target.dirAnim = 0;
-				al_draw_bitmap_region(target.Sprite, target.dirAnim, target.faseAnim, 32, 48, target.Location.X, target.Location.Y, NULL);
-			}
-			break;
-		case up:
-			target.faseAnim = 144;
-			if (target.anim == TRUE){
-				target.dirAnim += 32;
-				target.anim = FALSE;
-			}
-			if (target.dirAnim != 128)
-				al_draw_bitmap_region(target.Sprite, target.dirAnim, target.faseAnim, 32, 48, target.Location.X, target.Location.Y, NULL);
-			else{
-				target.dirAnim = 0;
-				al_draw_bitmap_region(target.Sprite, target.dirAnim, target.faseAnim, 32, 48, target.Location.X, target.Location.Y, NULL);
-			}
-			break;
-		case left:
-			target.faseAnim = 48;
-			if (target.anim == TRUE){
-				target.dirAnim += 32;
-				target.anim = FALSE;
-			}
-			if (target.dirAnim != 128)
-				al_draw_bitmap_region(target.Sprite, target.dirAnim, target.faseAnim, 32, 48, target.Location.X, target.Location.Y, NULL);
-			else{
-				target.dirAnim = 0;
-				al_draw_bitmap_region(target.Sprite, target.dirAnim, target.faseAnim, 32, 48, target.Location.X, target.Location.Y, NULL);
-			}
-			break;
-		case right:
-			target.faseAnim = 96;
-			if (target.anim == TRUE) {
-				target.dirAnim += 32;
-				target.anim = FALSE;
-			}
-			if (target.dirAnim != 128)
-				al_draw_bitmap_region(target.Sprite, target.dirAnim, target.faseAnim, 32, 48, target.Location.X, target.Location.Y, NULL);
-			else{
-				target.dirAnim = 0;
-				al_draw_bitmap_region(target.Sprite, target.dirAnim, target.faseAnim, 32, 48, target.Location.X, target.Location.Y, NULL);
-			}
-			break;
-		default:
-			break;
-		}
+	recLocation xy = numToLoc(target);
+	al_draw_bitmap_region(target.Sprite, xy.X, xy.Y, 32, 48, target.Location.X, target.Location.Y, NULL);
 }
 //DA GENERALIZZARE UTILIZZANDO STRUTTURA RECSTANZA
 void control_collisioni(char l){
@@ -159,7 +103,6 @@ void control_collisioni(char l){
 }
 //Funzione che cancella ogni oggetto su schermo e lo ridisegna se il parametro visible dell'oggetto stesso è true.
 void reRender(){
-
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 	al_draw_bitmap(scenario[0][0].immagine , 0, 0, 1);
 	disegna_personaggio();
@@ -184,13 +127,9 @@ void movCycle(){
 		if (e.type == ALLEGRO_EVENT_TIMER)
 		{
 			redraw = player_action();
-			if (redraw){
-				animationFrameCounter++;
-				if (animationFrameCounter > 0){
-
-					animationFrameCounter = 0;
-				}
-			}
+			animationFrameCounter++;
+			if (animationFrameCounter > 60)
+				animationFrameCounter = 0;
 		}
 		else if (e.type == ALLEGRO_EVENT_KEY_DOWN)
 		{
@@ -247,7 +186,7 @@ bool player_action() {
 	if (key_buffer[UP])
 	{
 		target.anim = true;
-		posizioneSprite = up;
+		target.dirAnim = 0;
 		target.Location.Y -= target.MoveSpeed;
 		col_char = 'a';
 		control_collisioni(col_char);
@@ -257,7 +196,7 @@ bool player_action() {
 	if (key_buffer[DOWN])
 	{
 		target.anim = true;
-		posizioneSprite = down;
+		target.dirAnim = 1;
 		target.Location.Y += target.MoveSpeed;
 		col_char = 'b';
 		control_collisioni(col_char);
@@ -266,7 +205,7 @@ bool player_action() {
 	if (key_buffer[LEFT])
 	{
 		target.anim = true;
-		posizioneSprite = left;
+		target.dirAnim = 2;
 		target.Location.X -= target.MoveSpeed;
 		col_char = 'c';
 		control_collisioni(col_char);
@@ -275,11 +214,46 @@ bool player_action() {
 	if (key_buffer[RIGHT])
 	{
 		target.anim = true;
-		posizioneSprite = right;
+		target.dirAnim = 3;
 		target.Location.X += target.MoveSpeed;
 		col_char = 'd';
 		control_collisioni(col_char);
 		redr = true;
 	}
 	return redr;
+}
+
+recLocation numToLoc(recPersonaggio p){
+	recLocation loc = initrecLocation(-1, -1);
+	switch (p.faseAnim)
+	{
+	case 0:
+		loc.X = 0;
+		break;
+	case 1:
+		loc.X = 32;
+		break;
+	case 2:
+		loc.X = 64;
+		break;
+	case 3:
+		loc.X = 96;
+		break;
+	}
+	switch (p.dirAnim)
+	{
+	case 0:
+		loc.Y = 0;
+		break;
+	case 1:
+		loc.Y = 48;
+		break;
+	case 2:
+		loc.Y = 96;
+		break;
+	case 3:
+		loc.Y = 144;
+		break;
+	}
+	return loc;
 }
