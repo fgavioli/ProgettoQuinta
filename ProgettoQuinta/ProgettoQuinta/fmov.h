@@ -1,18 +1,29 @@
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_image.h>
+
+#define dx false;
+#define giu true;
+
 //Strutture utilizzate per ogni personaggio su schermo che descrivono posizionamento e caratteristiche principali personaggi.
 struct recLocation
 {
 	int X;
 	int Y;
 };
+struct recPorta{
+	short larghezza;							//Larghezza della apertura
+	recLocation posizione;						//Posizione della porta
+	bool direzione;								//Indica la direzione verso cui la porta verra disegnata(renderizzata)
+};
 struct recStanza{
 
 	ALLEGRO_BITMAP* immagine;
+	recPorta porte[];
 	short rowStanza, colStanza;
+
 	// Dato che la stanza è 1024x768 i limiti superiori e inferiori delle stanze sono a loro volta 
 	// 0,0,1024,768
-	short door_left, door_right, door_up, door_down; //porte delle stanze 
+	
 };
 
 struct recPersonaggio
@@ -29,7 +40,7 @@ struct recPersonaggio
 	bool anim = false;
 };
 
-recStanza initrecStanza(ALLEGRO_BITMAP *immagine, short num_stanza, short lim_left, short lim_right, short lim_up, short lim_down, short door_left, short door_right, short door_up, short door_down);
+recStanza initrecStanza(ALLEGRO_BITMAP *immagine, short righa, short colonna);
 recPersonaggio initrecPersonaggio(short MoveSpeed, short HealthPoints, short stanza, ALLEGRO_BITMAP *Sprite, recLocation Location, bool isVisible);
 recLocation initrecLocation(int x, int y);
 void load_stanze();

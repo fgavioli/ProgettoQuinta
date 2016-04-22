@@ -30,14 +30,12 @@ recPersonaggio initrecPersonaggio(short MoveSpeed, short HealthPoints,short stan
 	r.stanza = stanza;
 	return r;
 }
-recStanza initrecStanza(ALLEGRO_BITMAP *immagine, short num_stanza, short col_left, short col_right, short col_up, short col_down, short door_left, short door_right, short door_up, short door_down){
+recStanza initrecStanza(ALLEGRO_BITMAP *immagine, short righa, short colonna) {
 	recStanza stanza;
 	stanza.immagine = immagine;
-	//stanza.num_stanza = num_stanza;
-	stanza.door_left = door_left;
-	stanza.door_right = door_right;
-	stanza.door_up = door_up;
-	stanza.door_down = door_down;
+	stanza.colStanza = colonna;
+	stanza.rowStanza = righa;
+
 	return stanza;
 };
 recLocation initrecLocation(int x, int y){
@@ -48,7 +46,9 @@ recLocation initrecLocation(int x, int y){
 }
 
 void load_stanze(){
-	scenario[0][0].immagine = al_load_bitmap("bg.png");
+	for (short j = 0; j < 3; j++)
+		for (short k = 0; k < 3; k++)
+			scenario[j][k] = initrecStanza(al_load_bitmap("bg.png"), j, k);
 	//aggiungere load da disco di altre immagini stanze
 }
 //Funzione per le animazioni (DA GUARDARE!!!!!!!!!!!!)
@@ -60,8 +60,8 @@ void disegna_personaggio() {
 void control_collisioni(char l){
 	switch (l){
 		case 'a': //up
-			if (target.Location.Y == 60)
-				if (target.Location.X <= 700 && target.Location.X >= 570){
+			if (target.Location.Y == 90)
+				if (target.Location.X <= 500 && target.Location.X >= 470){
 					target.stanza++;
 					target.Location.Y = 550;
 				}
@@ -69,7 +69,7 @@ void control_collisioni(char l){
 				target.Location.Y += 5;
 			break;
 		case 'b': //down
-			if (target.Location.Y == 580)
+			if (target.Location.Y == 620)
 				if (target.Location.X <= 700 && target.Location.X >= 570){
 					target.stanza--;
 					target.Location.Y = 100;
@@ -78,7 +78,7 @@ void control_collisioni(char l){
 				target.Location.Y -= 5;
 			break;
 		case 'c': //left
-			if (target.Location.X == 240){
+			if (target.Location.X == 100){
 				if (target.Location.Y <= 380 && target.Location.Y >= 270){
 					target.stanza++;
 					target.Location.X = 990;
@@ -88,7 +88,7 @@ void control_collisioni(char l){
 			}
 			break;
 		case 'd': //right
-			if (target.Location.X >= 990){
+			if (target.Location.X >= 890){
 				if (target.Location.Y <= 380 && target.Location.Y >= 270){
 					target.stanza--;
 					target.Location.X = 250;
